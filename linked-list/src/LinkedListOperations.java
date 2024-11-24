@@ -23,6 +23,16 @@ public class LinkedListOperations {
     return newHead;
   }
 
+  public Node findIntersectionTwoLinkedList(Node headA, Node headB) {
+    Node currA = headA;
+    Node currB = headB;
+    while(currA != currB) {
+      currA = currA == null ? headB : currA.next;
+      currB = currB == null ? headA : currB.next;
+    }
+    return currA;
+  }
+
   public void printLinkedList(Node head) {
     Node curr = head;
     while(curr != null) {
