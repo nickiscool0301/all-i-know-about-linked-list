@@ -33,6 +33,23 @@ public class LinkedListOperations {
     return currA;
   }
 
+  public Node addOneToLinkedList(Node head) {
+    head = reverseLinkedList(head);
+    Node current = head;
+    int carry = 1;
+    while(current != null) {
+      int sum = current.val + carry;
+      current.val = sum % 10;
+      carry = sum / 10;
+      if(carry == 0) break;
+      if(carry > 0 && current.next == null) {
+        current.next = new Node(0);
+      }
+      current = current.next;
+    }
+    return reverseLinkedList(head);
+  }
+
   public void printLinkedList(Node head) {
     Node curr = head;
     while(curr != null) {
